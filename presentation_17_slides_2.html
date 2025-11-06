@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presupuesto ITSE - Centro Médico Miraflores (17 Slides)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- 1. CONFIGURACIÓN GENERAL Y RESET --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #F0F4F8; /* Fondo exterior más claro y sutil */
+            color: #1A202C;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 0;
+        }
+
+        /* --- 2. CONTENEDOR DE LA PRESENTACIÓN --- */
+        .slide-container {
+            width: 1100px; /* Ligeramente más ancho para más espacio */
+            max-width: 95%;
+        }
+        
+        /* --- 3. DIAPOSITIVAS (Forma Redefinida y Márgenes) --- */
+        .slide {
+            background-color: #FFFFFF;
+            border-radius: 20px; /* Bordes más definidos */
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
+            margin-bottom: 50px; /* Espacio entre slides aumentado */
+            padding: 70px 90px; /* Márgenes internos muy generosos */
+            min-height: 650px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* --- 4. CABECERA Y NUMERACIÓN DE SLIDE --- */
+        .slide-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #E2E8F0;
+            margin-bottom: 30px;
+        }
+        
+        .slide-topic {
+            font-size: 15px;
+            color: #4A5568;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        
+        .slide-number {
+            font-size: 18px;
+            color: #A0AEC0;
+            font-weight: 600;
+        }
+        
+        /* --- 5. TIPOGRAFÍA (Mayor Jerarquía y Legibilidad) --- */
+        .slide-title {
+            color: #1A202C;
+            font-size: 50px; /* Título principal más grande */
+            font-weight: 900; /* Extra bold */
+            margin-bottom: 10px;
+            letter-spacing: -1.5px;
+        }
+        
+        .slide-subtitle {
+            color: #4A5568;
+            font-size: 26px;
+            font-weight: 400;
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+        
+        h3 {
+            color: #2B6CB0;
+            font-size: 30px; /* Títulos de sección más grandes */
+            font-weight: 800;
+            margin: 30px 0 15px 0;
+        }
+        
+        h4 {
+            color: #2D3748;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 20px 0 10px 0;
+        }
+        
+        p, li {
+            color: #2D3748;
+            font-size: 19px; /* Texto base aumentado */
+            line-height: 1.8; /* Espaciado de línea generoso */
+        }
+        
+        ul { margin: 15px 0 20px 25px; }
+        li { margin-bottom: 12px; }
+        strong { color: #1A202C; font-weight: 700; }
+        
+        /* --- 6. PORTADA (DISEÑO ESPECÍFICO) --- */
+        .portada {
+            background: linear-gradient(135deg, #1D4068 0%, #2B6CB0 100%); /* Azul oscuro corporativo */
+            color: white;
+            text-align: center;
+            justify-content: center;
+            box-shadow: 0 15px 50px rgba(29, 64, 104, 0.6);
+            padding: 100px;
+        }
+        .portada-title { color: white; font-size: 72px; letter-spacing: -2px;}
+        .portada-subtitle { font-size: 30px; color: #EBF8FF; }
+        .portada-location { color: #A0AEC0; margin-top: 15px; }
+        .portada-monto {
+            font-size: 80px;
+            font-weight: 900;
+            margin-top: 60px;
+            padding: 30px 50px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            display: inline-block;
+            color: white;
+            backdrop-filter: blur(5px);
+        }
+        .portada-nota { color: #CBD5E0; margin-top: 35px; }
+        
+        /* --- 7. CAJAS (Nuevos Colores y Bordes más Gruesos) --- */
+        .box {
+            padding: 30px;
+            border-radius: 16px;
+            margin: 20px 0; /* Margen vertical consistente */
+            background: #F7FAFC;
+            border: 1px solid #E2E8F0;
+            border-top-width: 6px; /* Borde superior más grueso */
+        }
+        
+        .box-default { border-top-color: #64748B; }
+        .box-info    { border-top-color: #3182CE; background: #EBF8FF; }
+        .box-success { border-top-color: #38A169; background: #F0FFF4; }
+        .box-warning { border-top-color: #D69E2E; background: #FFFBF0; }
+        .box-alert   { border-top-color: #E53E3E; background: #FFF5F5; }
+
+        .box-alert h4 { color: #C53030; }
+        .box-success h4 { color: #2F855A; }
+        
+        /* --- 8. TABLAS --- */
+        table {
+            width: 100%;
+            border-collapse: separate; /* Permite border-radius */
+            border-spacing: 0;
+            margin: 25px 0;
+            overflow: hidden; /* Asegura que el border-radius funcione */
+            border-radius: 12px;
+        }
+        
+        th {
+            background: #EBF8FF; /* Fondo de encabezado claro */
+            color: #2C5282;
+            padding: 18px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 15px;
+            text-transform: uppercase;
+        }
+        
+        td {
+            padding: 18px;
+            border-bottom: 1px solid #F3F4F6;
+            color: #2D3748;
+            vertical-align: middle;
+        }
+        
+        td:last-child { text-align: right; }
+        tr:last-child td { border-bottom: none; }
+        
+        .monto {
+            color: #1A202C;
+            font-weight: 800; /* Montos muy bold */
+            font-size: 20px;
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        /* --- 9. BLOQUES DE TOTALES Y FASES --- */
+        .total-box {
+            background: #486D6C;
+            color: white;
+            padding: 40px 50px;
+            border-radius: 20px; /* Bordes redondeados grandes */
+            text-align: center;
+            margin: 20px 0; /* Consistente con .box margin */
+        }
+        
+        .total-amount {
+            font-size: 60px;
+            font-weight: 900;
+            margin-bottom: 5px;
+            color: #F6AD55; /* Naranja/dorado para el total */
+        }
+        
+        .total-label {
+            font-size: 18px;
+            color: #A0AEC0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        
+        .fase {
+            background: #F7FAFC;
+            padding: 30px;
+            border-radius: 16px;
+            margin: 10px 0;
+            border: 1px solid #E2E8F0;
+            border-top: 6px solid #A0AEC0; /* Borde más grueso */
+            height: 100%;
+        }
+        
+        /* --- 10. FILA DE ÍTEMS (Especial para Gestión S/. 7,000.00) --- */
+        .item-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px;
+            background: #F0F4FF; /* Fondo claro de acento */
+            border-radius: 16px;
+            margin: 20px 0;
+            border-left: 10px solid #2B6CB0; /* Borde izquierdo muy fuerte */
+            box-shadow: 0 4px 15px rgba(43, 108, 176, 0.1);
+        }
+        
+        .item-label {
+            color: #1A202C;
+            font-weight: 700;
+            font-size: 20px;
+        }
+        
+        .item-value {
+            color: #2B6CB0;
+            font-weight: 900;
+            font-size: 26px; /* Cifra muy grande */
+            white-space: nowrap;
+        }
+        
+        /* --- 11. LAYOUTS DE COLUMNAS (Flexbox) --- */
+        .two-column-layout { display: flex; gap: 40px; width: 100%; }
+        .two-column-layout > .column { flex: 1; min-width: 0; }
+        .three-column-layout { display: flex; gap: 30px; width: 100%; }
+        .three-column-layout > .column { flex: 1; min-width: 0; }
+
+        /* --- 12. UTILIDADES --- */
+        /* Eliminamos cualquier margen fuerte como .mt-40 para evitar desbordamientos */
+    </style>
+</head>
+<body>
+    
+    <!-- CONTENEDOR PRINCIPAL DE LA PRESENTACIÓN -->
+    <div class="slide-container">
+        
+        <!-- ====================================================== -->
+        <!-- SLIDE 1: PORTADA (1/17) -->
+        <!-- ====================================================== -->
+        <div class="slide portada">
+            <div class="portada-title">PRESUPUESTO PARA OBTENER<br>CERTIFICADO ITSE</div>
+            <div class="portada-subtitle">Conjunto de Consultorios Médicos</div>
+            <div class="portada-subtitle">Centro de Salud - 04 Niveles</div>
+            <div class="portada-location">Miraflores, Lima - Perú</div>
+            <div class="portada-location">Fecha: 10 de Noviembre de 2025</div>
+            <div class="portada-monto">S/. 110,785.57</div>
+            <div class="portada-nota">
+                Este monto incluye la gestión, la obra ITSE de Masedi con IGV,<br>
+                y la plataforma salvaescaleras de César Goytizolo con IGV
+            </div>
+        </div>
+
+        <!-- ====================================================== -->
+        <!-- SLIDE 2: QUÉ ES ITSE (2/17) -->
+        <!-- ====================================================== -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-topic">Certificado ITSE</div>
+                <div class="slide-number">02 / 17</div>
+            </div>
+            <h2 class="slide-title">Certificado ITSE</h2>
+            <p class="slide-subtitle">Características y Alcance</p>
+            
+            <h3>Inspección Técnica de Seguridad en Edificaciones (ITSE)</h3>
+            <p><strong>Emitido por:</strong> Municipalidad de Miraflores</p>
+            
+            <h4>Características Clave</h4>
+            <ul>
+                <li><strong>Vigencia:</strong> 2 años</li>
+                <li><strong>Tipo:</strong> ITSE Posterior (Riesgo Bajo-Medio)</li>
+                <li><strong>Obligatoriedad:</strong> Requisito indispensable para Licencia de Funcionamiento</li>
+                <li><strong>Plazo Crítico:</strong> Máximo 1 mes después de emitida la licencia</li>
+                <li><strong>Riesgo:</strong> Sanciones económicas y posible clausura sin ITSE</li>
+            </ul>
+            
+            <div class="box box-alert" style="margin-top: 40px;">
+                <h4 style="color: #C53030;">Cumplimiento Crítico por Consultorio</h4>
+                <p>Dadas las características del conjunto de consultorios, <strong>cada consultorio médico tendrá que contar con su respectiva Licencia de Funcionamiento y su respectivo Certificado ITSE.</strong></p>
+            </div>
+        </div>
+
+        <!-- ====================================================== -->
+        <!-- SLIDE 3: ESTRUCTURA DEL PRESUPUESTO (3/17) -->
+        <!-- ====================================================== -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-topic">Estructura del Presupuesto</div>
+                <div class="slide-number">03 / 17</div>
+            </div>
+            <h2 class="slide-title">Estructura del Presupuesto</h2>
+            <p class="slide-subtitle">Inversión dividida en 3 partes</p>
+            
+            <!-- *** INICIO DE LAYOUT DE 2 COLUMNAS *** -->
+            <div class="two-column-layout">
+                <div class="column">
+                    <!-- Columna 1: Masedi -->
+                    <div class="box box-info" style="height: auto;">
+                        <h4>1. MASEDI - Contratista (Obra ITSE)</h4>
+                        <p>Habilitación y acondicionamiento normativo.</p>
+                        <table>
+                            <tr>
+                                <td>Costo Directo</td>
+                                <td class="monto">S/. 56,324.65</td>
+                            </tr>
+                            <tr>
+                                <td>Gastos Generales (19.88%)</td>
+                                <td class="monto">S/. 11,195.95</td>
+                            </tr>
+                            <tr>
+                                <td>Utilidad (6.63%)</td>
+                                <td class="monto">S/. 3,731.98</td>
+                            </tr>
+                            <tr>
+                                <td>Subtotal</td>
+                                <td class="monto">S/. 71,252.58</td>
+                            </tr>
+                            <tr>
+                                <td>IGV (18%)</td>
+                                <td class="monto">S/. 12,825.46</td>
+                            </tr>
+                            <tr style="background: #EBF8FF;">
+                                <td><strong style="color: #2B6CB0;">Total Masedi</strong></td>
+                                <td class="monto" style="font-size: 22px; color: #2B6CB0;">S/. 84,078.04</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="column">
+                    <!-- Columna 2: César G, Gestión y Total -->
+                    <div class="box box-info">
+                        <h4>2. César Goytizolo - Plataforma</h4>
+                        <p>Costo e instalación (Con IGV incluido).</p>
+                        <p class="monto" style="font-size: 22px; color: #2B6CB0; text-align: left; padding-top: 5px;">Monto: S/. 19,707.53</p>
+                        <p style="font-size: 16px; color: #4A5568; margin-top: 10px; line-height: 1.5;">
+                            <strong>Detalle:</strong> $4,950.00 USD + IGV (T.C. S/. 3.37/USD)
+                        </p>
+                    </div>
+                    
+                    <!-- ÍTEM DE GESTIÓN Y SEGUIMIENTO CON ESTILO RESALTADO (FIX) -->
+                    <div class="item-row">
+                        <span class="item-label">3. Gestión y Seguimiento</span>
+                        <span class="item-value">S/. 7,000.00</span>
+                    </div>
+                    
+                    <div class="total-box">
+                        <div class="total-label">Inversión Total del Proyecto</div>
+                        <div class="total-amount" style="color: white;">S/. 110,785.57</div>
+                    </div>
+                </div>
+            </div>
+            <!-- *** FIN DE LAYOUT DE 2 COLUMNAS *** -->
+        </div>
+
+        <!-- ====================================================== -->
+        <!-- SLIDE 4: COSTOS DIRECTOS (4/17) -->
+        <!-- ====================================================== -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-topic">Costos Directos</div>
+                <div class="slide-number">04 / 17</div>
+            </div>
+            <h2 class="slide-title">Costos Directos</h2>
+            <p class="slide-subtitle">Desglose sin GG, Utilidad, ni IGV (excepto donde se indica)</p>
+            
+            <div class="two-column-layout">
+                <div class="column">
+                    <h3>Resumen de Costos Base</h3>
+            
+                    <div class="item-row" style="border-left: 10px solid #D69E2E; background: #FFFBF0; box-shadow: none;">
+                        <span class="item-label" style="color: #D69E2E;">Gestión y Seguimiento</span>
+                        <span class="item-value" style="color: #D69E2E;">S/. 7,000.00</span>
+                    </div>
+                    
+                    <div class="item-row" style="border-left: 10px solid #2B6CB0; background: #EBF8FF; box-shadow: none;">
+                        <span class="item-label" style="color: #2B6CB0;">César Goytizolo (Plataforma con IGV)</span>
+                        <span class="item-value" style="color: #2B6CB0;">S/. 19,707.53</span>
+                    </div>
+                    
+                    <div class="item-row" style="background: #F0FDF4; border-color: #38A169; border-left: 10px solid #38A169; box-shadow: none;">
+                        <span class="item-label" style="font-weight: 700; color: #38A169;">Masedi - Contratista (C.D.)</span>
+                        <span class="item-value" style="font-size: 26px; color: #38A169;">S/. 56,324.65</span>
+                    </div>
+                </div>
+                
+                <div class="column">
+                    <h3>Distribución de Partidas - Masedi (C.D.)</h3>
+            
+                    <table>
+                        <tr>
+                            <th>Partida</th>
+                            <th class="monto">Monto</th>
+                        </tr>
+                        <tr>
+                            <td>Instalaciones Eléctricas</td>
+                            <td class="monto">S/. 30,848.60</td>
+                        </tr>
+                        <tr>
+                            <td>Accesibilidad y Limpieza</td>
+                            <td class="monto">S/. 8,225.00</td>
+                        </tr>
+                        <tr>
+                            <td>Sistema ACI</td>
+                            <td class="monto">S/. 7,765.00</td>
+                        </tr>
+                        <tr>
+                            <td>Trabajos Preliminares</td>
+                            <td class="monto">S/. 5,671.00</td>
+                        </tr>
+                        <tr>
+                            <td>Estructuras</td>
+                            <td class="monto">S/. 2,304.00</td>
+                        </tr>
+                        <tr>
+                            <td>Señalización</td>
+                            <td class="monto">S/. 1,510.55</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================== -->
+        <!-- SLIDE 5: PARTIDAS TÉCNICAS (1) (5/17) -->
+        <!-- ====================================================== -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-topic">Partidas Técnicas</div>
+                <div class="slide-number">05 / 17</div>
+            </div>
+            <h2 class="slide-title">Partidas Técnicas Obligatorias (1/2)</h2>
+            <p class="slide-subtitle">Detalle de trabajos de acondicionamiento (Costo Directo)</p>
+            
+            <div class="two-column-layout">
+                <div class="column">
+                    <h3>1. Instalaciones Eléctricas</h3>
+                    <p class="item-value" style="text-align: left; margin-bottom: 20px; color: #D69E2E;">S/. 30,848.60</p>
+                    <ul>
+                        <li>Retiro de instalaciones obsoletas</li>
+                        <li>5 tableros eléctricos nuevos por pisos</li>
+                        <li>49 puntos de tomacorrientes con línea a tierra</li>
+                        <li>12 luces de emergencia</li>
+                        <li>Puesta a tierra certificada (≤25Ω)</li>
+                        <li>Planos eléctricos completos</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>2. Trabajos Preliminares</h3>
+                    <p class="item-value" style="text-align: left; margin-bottom: 20px; color: #38A169;">S/. 5,671.00</p>
+                    <ul>
+                        <li>Limpieza general y acondicionamiento inicial</li>
+                        <li>Flete y transporte de materiales</li>
+                        <li>Equipos de Protección Individual (EPI)</li>
+                    </ul>
+                    
+                    <h3 style="margin-top: 40px;">3. Estructuras</h3>
+                    <p class="item-value" style="text-align: left; margin-bottom: 20px; color: #64748B;">S/. 2,304.00</p>
+                    <ul>
+                        <li>Inspección por especialista estructural</li>
+                        <li>Certificación del estado de la edificación</li>
+                        <li>Informe técnico detallado</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================== -->
+        <!-- SLIDE 6: PARTIDAS TÉCNICAS (ACI) (6/17) -->
+        <!-- ====================================================== -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-topic">Partidas Técnicas</div>
+                <div class="slide-number">06 / 17</div>
+            </div>
+            <h2 class="slide-title">Sistema ACI (Alarma Contra Incendios)</h2>
+            <p class="slide-subtitle">Costo Directo Auditado: <strong class="item-value" style="color: #E53E3E;">S/. 7,765.00</strong></p>
+            
+            <div class="box box-alert">
+                <h4>Obligatoriedad Crítica</h4>
+                <p>Sistema legalmente obligatorio para centros de salud con 2+ niveles. Indispensable para obtener el Certificado ITSE.</p>
+            </div>
+            
+            <h3>Componentes Incluidos</h3>
+            <div class="two-column-layout">
+                <div class="column">
+                    <ul>
+                        <li><strong>Central de Alarma:</strong> Caja de control centralizada</li>
+                        <li><strong>Detección:</strong> 7 sensores de humo direccionables</li>
+                        <li><strong>Alerta:</strong> 4 estaciones manuales con estroboscópica</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <ul>
+                        <li><strong>Cableado:</strong> 90m cable resistente al fuego (FPLR 2x18 AWG)</li>
+                        <li><strong>Pruebas:</strong> Puesta en marcha y configuración</li>
+                        <li><strong>Documentación CACI:</strong> Planos, memoria técnica y trámite Defensa Civil</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================== -->
+        <!-- SLIDE 7: PARTIDAS TÉCNICAS (SEÑALIZACIÓN) (7/17) -->
+        <!-- ====================================================== -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-topic">Partidas Técnicas</div>
+                <div class="slide-number">07 / 17</div>
+            </div>
+            <h2 class="slide-title">Señalización y Seguridad</h2>
+            <p class="slide-subtitle">Costo Directo Auditado: <strong class="item-value" style="color: #38A169;">S/. 1,510.55</strong> (Cumplimiento NTP 399.010-1)</p>
+            
+            <div class="two-column-layout">
+                <div class="column">
+                    <h3>Señalización de Evacuación y Riesgos</h3>
+                    <p>Necesaria para las rutas de evacuación y zonas de seguridad.</p>
+                    <ul>
+                        <li>2 señales de salida</li>
+                        <li>3 direccionales</li>
+                        <li>2 salidas de emergencia</li>
+                        <li>4 zonas seguras</li>
+                        <li>20 señales de aforo</li>
+                        <li>3 riesgo eléctrico</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>Equipos de Emergencia</h3>
+                    <p>Necesario para el cumplimiento de las normativas de seguridad.</p>
+                    <ul>
+                        <li>3 extintores PQS ABC 6kg con soporte</li>
+                        <li>3 botiquines de primeros auxilios</li>
+                        <li>Señales informativas correspondientes</li>
+                        <li>Señales de servicios higiénicos y número de pisos</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================== -->
+        <!-- SLIDE 8: PARTIDAS TÉCNICAS (ACCESIBILIDAD) (8/17) -->
+        <!-- ====================================================== -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-topic">Partidas Técnicas</div>
+                <div class="slide-number">08 / 17</div>
+            </div>
+            <h2 class="slide-title">Accesibilidad y Limpieza</h2>
+            <p class="slide-subtitle">Partida 01.06 - Habilitaciones críticas (Costo Directo Total: <strong class="item-value" style="color: #2B6CB0;">S/. 8,225.00</strong>)</p>
+            
+            <div class="two-column-layout">
+                <div class="column">
+                    <div class="box box-success" style="height: auto;">
+                        <h4>1. Accesibilidad</h4>
+                        <p class="monto" style="text-align: left; font-size: 26px; color: #2F855A;">S/. 4,725.00</p>
+                        <p><strong>Detalle:</strong> Desmontaje de muro cortina e instalación de puerta/vidrio para elevador de discapacitados.</p>
+                        <p><strong>Justificación:</strong> Garantiza acceso universal cumpliendo Ley N° 29973.</p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="box box-success" style="height: auto;">
+                        <h4>2. Limpieza Final</h4>
+                        <p class="monto" style="text-align: left; font-size: 26px; color: #2F855A;">S/. 3,500.00</p>
+                        <p><strong>Detalle:</strong> Limpieza profunda, vaciado de losa y retiro de escombros.</p>
+                        <p><strong>Justificación:</strong> Elimina riesgos para la inspección municipal ITSE.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================== -->
+        <!-- SLIDE 9: GESTIÓN Y COORDINACIÓN (9/17) -->
+        <!-- ====================================================== -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-topic">Coordinación y Gestión</div>
+                <div class="slide-number">09 / 17</div>
+            </div>
+            <h2 class="slide-title">Coordinación y Gestión por Fases</h2>
+            <p class="slide-subtitle">Servicio integral (Inversión Total: <strong class="item-value" style="color: #D69E2E;">S/. 7,000.00</strong>)</p>
+            
+            <div class="three-column-layout">
+                <div class="column">
+                    <div class="fase" style="border-top-color: #64748B;">
+                        <div class="fase-title" style="color: #64748B;">Fase 1: Previo</div>
+                        <p class="fase-objetivo">Planificación y Contratación</p>
+                        <p class="monto" style="text-align: left; font-size: 22px;">S/. 1,500.00</p>
+                        <ul>
+                            <li>Diagnóstico técnico</li>
+                            <li>Coordinación contratistas</li>
+                            <li>Negociación costos/plazos</li>
+                            <li>Definición cronograma</li>
+                            <li>Preparación documental</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="fase" style="border-top-color: #3182CE;">
+                        <div class="fase-title" style="color: #3182CE;">Fase 2: Durante</div>
+                        <p class="fase-objetivo">Supervisión y Ejecución</p>
+                        <p class="monto" style="text-align: left; font-size: 22px;">S/. 4,000.00</p>
+                        <ul>
+                            <li>Supervisión diaria</li>
+                            <li>Control de calidad</li>
+                            <li>Supervisión plataforma</li>
+                            <li>Gestión de incidencias</li>
+                            <li>Prevención sobrecostos</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="fase" style="border-top-color: #38A169;">
+                        <div class="fase-title" style="color: #38A169;">Fase 3: Posterior</div>
+                        <p class="fase-objetivo">Certificación Final</p>
+                        <p class="monto" style="text-align: left; font-size: 22px;">S/. 1,500.00</p>
+                        <ul>
+                            <li>Revisión técnica final</li>
+                            <li>Acompañamiento inspección</li>
+                            <li>Coordinación Defensa Civil</li>
+                            <li>Entrega documentación</li>
+                            <li>Garantía de obtención ITSE</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================== -->
+        <!-- SLIDE 10: COSTOS MUNICIPALES (10/17) -->
+        <!-- ====================================================== -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-topic">Costos Municipales</div>
+                <div class="slide-number">10 / 17</div>
+            </div>
+            <h2 class="slide-title">Costos Municipales y Proceso</h2>
+            <p class="slide-subtitle">Información actualizada del trámite por consultorio</p>
+            
+            <div class="two-column-layout">
+                <div class="column">
+                    <div class="total-box" style="background: #4B7C7B;">
+                        <div class="total-label" style="color: white !important;">Costo Total por Consultorio</div>
+                        <div class="total-amount" style="font-size: 68px; color: white;">S/. 258.00</div>
+                        <div style="font-size: 18px; color: #F7FAFC; margin-top: 5px; font-weight: 500;">(ITSE + Licencia de Funcionamiento)</div>
+                    </div>
+                    
+                    <div class="box box-alert" style="margin-top: 40px;">
+                        <h4 style="color: #C53030;">Consecuencias de Desaprobación</h4>
+                        <ul>
+                            <li>Se retira Licencia de Funcionamiento y Certificado ITSE</li>
+                            <li>Corregir observaciones y pagar nuevamente S/. 258.00</li>
+                            <li><strong>Prevención:</strong> Nuestra gestión garantiza aprobación en primera inspección</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="column">
+                    <h3>Proceso Cronológico Municipal</h3>
+                    <ol style="list-style-type: decimal; margin-left: 20px; font-size: 19px;">
+                        <li><strong>Prerequisitos:</strong> Obra completada y documentación lista.</li>
+                        <li><strong>Inicio en Comercialización:</strong> Se llena DDJJ, Defensa Civil entrega Anexos 2-4. Se emite código de pago.</li>
+                        <li><strong>Pago:</strong> Se pagan los S/. 258.00.</li>
+                        <li><strong>Emisión de Licencia (Automática):</strong> Comercialización emite Licencia de Funcionamiento (Riesgo Medio-Bajo).</li>
+                        <li><strong>Agendamiento:</strong> Al día hábil siguiente se agenda visita de Defensa Civil.</li>
+                        <li><strong>Inspección Técnica:</strong> Técnicos verifican cumplimiento. Si aprueba, se emite Certificado ITSE.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================== -->
+        <!-- SLIDE 11: CRONOGRAMA (11/17) -->
+        <!-- ====================================================== -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-topic">Cronograma</div>
+                <div class="slide-number">11 / 17</div>
+            </div>
+            <h2 class="slide-title">Cronograma del Proyecto</h2>
+            <p class="slide-subtitle">Plazo total estimado: 75-95 días calendario</p>
+            
+            <div class="two-column-layout">
+                <div class="column">
+                    <div class="fase" style="border-top-color: #3182CE; height: 100%;">
+                        <div class="fase-title" style="color: #3182CE;">Fase 1: Ejecución de Obras</div>
+                        <p class="fase-objetivo">Plazo: 45-60 días calendario</p>
+                        <p><strong>Objetivo:</strong> Acondicionamiento integral del edificio</p>
+                        <ul>
+                            <li>Trabajos preliminares</li>
+                            <li>Instalaciones eléctricas</li>
+                            <li>Sistema ACI</li>
+                            <li>Señalización</li>
+                            <li>Accesibilidad y limpieza</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="fase" style="border-top-color: #38A169; height: 100%;">
+                        <div class="fase-title" style="color: #38A169;">Fase 2: Trámite Municipal</div>
+                        <p class="fase-objetivo">Plazo: 15-20 días hábiles</p>
+                        <p><strong>Objetivo:</strong> Obtención de certificaciones</p>
+                        <ul>
+                            <li>Gestión de Licencias de Funcionamiento individuales</li>
+                            <li>Gestión de Certificados ITSE por consultorio</li>
+                            <li>Consultorio -2 (administración) incluido en gestión general</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="box box-alert text-center" style="margin-top: 40px;">
+                <h4 style="color: #C53030;">Importante:</h4>
+                <p style="text-align: center;">Máximo 1 mes tras obtener la Licencia de Funcionamiento para tramitar el Certificado ITSE.</p>
+            </div>
+        </div>
+
+        <!-- ====================================================== -->
+        <!-- SLIDE 12: PROGRAMA DE MANTENIMIENTO (12/17) - CORREGIDO -->
+        <!-- ====================================================== -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-topic">Programa de Mantenimiento</div>
+                <div class="slide-number">12 / 17</div>
+            </div>
+            <h2 class="slide-title">Programa de Mantenimiento</h2>
+            <p class="slide-subtitle">Acciones para mantener vigencia ITSE (2 años)</p>
+            
+            <div class="two-column-layout">
+                <div class="column">
+                    <div class="box box-success">
+                        <h4>Mantenimiento Anual (Crítico)</h4>
+                        <ul>
+                            <li><strong>Puesta a Tierra:</strong> Certificación (≤25Ω)</li>
+                            <li><strong>Extintores:</strong> Recarga y prueba hidrostática</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- FIX: Eliminado mt-40 y style="height: 100%;" para que la caja se apile correctamente -->
+                    <div class="box box-info">
+                        <h4>Mantenimiento Semestral</h4>
+                        <ul>
+                            <li><strong>Sistema ACI:</strong> Revisión completa</li>
+                            <li><strong>Seguridad General:</strong> Rutas de evacuación</li>
+                            <li><strong>Simulacros:</strong> Evacuación</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="box box-default">
+                        <h4>Mantenimiento Trimestral</h4>
+                        <ul>
+                            <li><strong>Tableros Eléctricos:</strong> Inspección</li>
+                            <li><strong>Señalización:</strong> Revisión</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="box box-default">
+                        <h4>Mantenimiento Mensual</h4>
+                        <ul>
+                            <li><strong>Luces de Emergencia:</strong> Prueba funcional</li>
+                        </ul>
+                    </div>
+
+                    <div class="box box-warning">
+                        <h4>Renovación Obligatoria</h4>
+                        <p><strong>Vigencia:</strong> 2 años | <strong>Renovar:</strong> 3 meses antes del vencimiento</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================== -->
+        <!-- SLIDE 13: JUSTIFICACIÓN NORMATIVA (13/17) -->
+        <!-- ====================================================== -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-topic">Justificación Normativa</div>
+                <div class="slide-number">13 / 17</div>
+            </div>
+            <h2 class="slide-title">Justificación Normativa</h2>
+            <p class="slide-subtitle">Cumplimiento del Anexo 4 (Declaración Jurada)</p>
+            
+            <div class="box box-info">
+                <h4 style="color: #2B6CB0;">¿Qué es el Anexo 4?</h4>
+                <p>Es la <strong>Declaración Jurada del Profesional Responsable</strong> que certifica el cumplimiento de todas las normas de seguridad técnica aplicables. Es un requisito indispensable para el ITSE.</p>
+            </div>
+            
+            <h3>Garantía de Cumplimiento (Inversión)</h3>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Requisito</th>
+                        <th>Cumplimiento</th>
+                        <th class="monto">Inversión (C.D.)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Seguridad Estructural</td>
+                        <td>Certificación especialista</td>
+                        <td class="monto">S/. 2,304.00</td>
+                    </tr>
+                    <tr>
+                        <td>Instalaciones Eléctricas</td>
+                        <td>CNE-U + Puesta a Tierra</td>
+                        <td class="monto">S/. 30,848.60</td>
+                    </tr>
+                    <tr>
+                        <td>Sistema ACI</td>
+                        <td>Instalación + Planos</td>
+                        <td class="monto">S/. 7,765.00</td>
+                    </tr>
+                    <tr>
+                        <td>Accesibilidad</td>
+                        <td>Plataforma + Acondicionamiento</td>
+                        <td class="monto">S/. 24,432.53*</td>
+                    </tr>
+                    <tr>
+                        <td>Señalización</td>
+                        <td>NTP 399.010-1</td>
+                        <td class="monto">S/. 1,510.55</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="font-size: 16px; color: #4A5568; text-align: right; margin-top: -15px; line-height: 1.5;">
+                *Incluye C.D. S/. 4,725.00 + Plataforma S/. 19,707.53 (con IGV)
+            </p>
+        </div>
+
+        <!-- ====================================================== -->
+        <!-- SLIDE 14: DESGLOSE ELÉCTRICO (14/17) -->
+        <!-- ====================================================== -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-topic">Desglose Eléctrico</div>
+                <div class="slide-number">14 / 17</div>
+            </div>
+            <h2 class="slide-title">Desglose Eléctrico (Costo Directo)</h2>
+            <p class="slide-subtitle">Detalle de la partida de mayor inversión</p>
+            
+            <div class="total-box">
+                <div class="total-label">Costo Directo Auditado - Instalaciones Eléctricas</div>
+                <div class="total-amount" style="font-size: 56px; color: white;">S/. 30,848.60</div>
+            </div>
+            
+            <div class="two-column-layout">
+                <div class="column">
+                    <h3>1. Trabajos Previos y Puesta a Tierra</h3>
+                    <div class="item-row" style="border-left: 8px solid #3B82F6; background: #F7FAFC; box-shadow: none; margin: 15px 0;">
+                        <span class="item-label">Retiro de instalaciones obsoletas</span>
+                        <span class="item-value" style="font-size: 22px;">S/. 1,879.50</span>
+                    </div>
+                    <div class="item-row" style="border-left: 8px solid #3B82F6; background: #F7FAFC; box-shadow: none; margin: 15px 0;">
+                        <span class="item-label">Certificaciones y Puesta a Tierra</span>
+                        <span class="item-value" style="font-size: 22px;">S/. 4,877.47</span>
+                    </div>
+                </div>
+                <div class="column">
+                    <h3>2. Tableros y Salidas</h3>
+                    <div class="item-row" style="border-left: 8px solid #3B82F6; background: #F7FAFC; box-shadow: none; margin: 15px 0;">
+                        <span class="item-label">5 Tableros + Alimentadores LSOH90</span>
+                        <span class="item-value" style="font-size: 22px;">S/. 15,312.83</span>
+                    </div>
+                    <div class="item-row" style="border-left: 8px solid #3B82F6; background: #F7FAFC; box-shadow: none; margin: 15px 0;">
+                        <span class="item-label">49 tomacorrientes + 12 luces</span>
+                        <span class="item-value" style="font-size: 22px;">S/. 8,778.80</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================== -->
+        <!-- SLIDE 15: NORMATIVA APLICABLE (15/17) -->
+        <!-- ====================================================== -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-topic">Normativa Aplicable</div>
+                <div class="slide-number">15 / 17</div>
+            </div>
+            <h2 class="slide-title">Normativa Aplicable</h2>
+            <p class="slide-subtitle">Base legal del proyecto y cumplimiento RNE</p>
+            
+            <div class="three-column-layout">
+                <div class="column">
+                    <div class="box box-info" style="height: 100%;">
+                        <h4>Normativa de Gestión</h4>
+                        <ul>
+                            <li>DS N° 002-2018-PCM: Reglamento de ITSE</li>
+                            <li>Ley N° 27157: Regularización de Edificaciones</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="box box-info" style="height: 100%;">
+                        <h4>RNE - Reglamento Nacional de Edificaciones</h4>
+                        <ul>
+                            <li>Norma A.010: Condiciones Generales de Diseño</li>
+                            <li>Norma A.130: Requisitos de Seguridad</li>
+                            <li>Norma E.050 / E.090: Estructuras</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="box box-info" style="height: 100%;">
+                        <h4>Normas Técnicas (NTP)</h4>
+                        <ul>
+                            <li>CNE-U: Código Nacional de Electricidad</li>
+                            <li>NTP 399.010-1: Señalización</li>
+                            <li>NTP 350.043: Extintores</li>
+                            <li>Ley N° 29973: Personas con Discapacidad</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================== -->
+        <!-- SLIDE 16: POTENCIAL DE MERCADO (16/17) -->
+        <!-- ====================================================== -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-topic">Potencial de Mercado 2026</div>
+                <div class="slide-number">16 / 17</div>
+            </div>
+            <h2 class="slide-title">Potencial de Mercado 2026</h2>
+            <p class="slide-subtitle">Justificación estratégica de la inversión en Miraflores</p>
+            
+            <div class="three-column-layout">
+                <div class="column">
+                    <div class="box box-success" style="height: 100%;">
+                        <h4>1. Alta Demanda del Mercado</h4>
+                        <ul>
+                            <li>Población con alto poder adquisitivo</li>
+                            <li>Demanda creciente de geriatría</li>
+                            <li>Ubicación estratégica para redes EPS</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="box box-warning" style="height: 100%;">
+                        <h4>2. Ventaja Competitiva</h4>
+                        <ul>
+                            <li>Diferenciación de competencia informal</li>
+                            <li>ITSE garantiza confianza y seguridad</li>
+                            <li>Acceso a contratos corporativos</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="box box-info" style="height: 100%;">
+                        <h4>3. Proyección de Rentabilidad</h4>
+                        <ul>
+                            <li>Optimización y uso eficiente de 4 niveles</li>
+                            <li>Amortización de S/. 110,785.57 con ingresos recurrentes por alquiler</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================== -->
+        <!-- SLIDE 17: DISTRIBUCIÓN POR SOCIO (17/17) - CORREGIDO -->
+        <!-- ====================================================== -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-topic">Distribución por Socio</div>
+                <div class="slide-number">17 / 17</div>
+            </div>
+            <h2 class="slide-title">Distribución por Socio</h2>
+            <p class="slide-subtitle">Inversión dividida entre 10 socios</p>
+            
+            <div class="two-column-layout">
+                <div class="column">
+                    <!-- FIX: Eliminado style="height: 100%;" para permitir que el contenido se apile correctamente -->
+                    <div class="box box-info">
+                        <h4>Resumen de Inversión Total (Obra)</h4>
+                        <ul>
+                            <li><strong>Inversión Total:</strong> S/. 110,785.57</li>
+                            <li><strong>Número de Socios:</strong> 10</li>
+                            <li>Cubre: Masedi + Plataforma (con IGV) + Gestión Integral</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- FIX: Eliminado mt-40 para que la caja se alinee debajo de la anterior sin saltos -->
+                    <div class="box box-alert">
+                        <h4 style="color: #C53030;">Advertencia: Gastos Municipales</h4>
+                        <p>El monto <strong>NO incluye</strong> tasas municipales.</p>
+                        <p>Cada consultorio paga <strong>S/. 258.00</strong> (ITSE + Licencia).</p>
+                        <p>Costos municipales se sumarán al aporte (Ver Slide 10).</p>
+                    </div>
+                </div>
+                
+                <div class="column">
+                    <!-- FIX: Eliminado style="height: 100%;" para consistencia en la columna flex -->
+                    <div class="total-box" style="background: #558B8A; display: flex; flex-direction: column; justify-content: center;">
+                        <div class="total-label">Aporte Individual por Socio (Obra)</div>
+                        <div class="total-amount" style="font-size: 68px; color: white;">S/. 11,078.56</div>
+                        <div style="font-size: 32px; color: #CBD5E1; margin-top: 10px; font-weight: 600;">USD $3,288.14</div>
+                        <div style="font-size: 16px; color: #A0AEC0; margin-top: 5px;">(T.C. referencial S/. 3.37)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div> <!-- Fin de .slide-container -->
+</body>
+</html>
